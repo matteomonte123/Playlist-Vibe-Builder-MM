@@ -1,0 +1,86 @@
+# Playlist Vibe Builder
+
+# merge sort function
+def merge_sort(songs, key):
+
+    # base casw if only 1 song, already sorted
+    if len(songs) <= 1:
+        return songs
+
+    # split list into two halves
+    mid = len(songs) // 2
+    left_half = songs[:mid]
+    right_half = songs[mid:]
+
+    # recursive calls
+    left_half = merge_sort(left_half, key)
+    right_half = merge_sort(right_half, key)
+
+    # merge step
+    merged = []
+
+    i = 0
+    j = 0
+
+    # compare left and right sides
+    while i < len(left_half) and j < len(right_half):
+
+        if left_half[i][key] <= right_half[j][key]:
+            merged.append(left_half[i])
+            i += 1
+
+        else:
+            merged.append(right_half[j])
+            j += 1
+
+    # add leftovers from left side
+    while i < len(left_half):
+        merged.append(left_half[i])
+        i += 1
+
+    # add leftovers from right side
+    while j < len(right_half):
+        merged.append(right_half[j])
+        j += 1
+
+    return merged
+
+
+# collect songs from user
+songs = []
+
+print("Enter songs one at a time.")
+print("When finished, type 'done' for title.")
+
+while True:
+
+    title = input("Song title: ")
+
+    if title.lower() == "done":
+        break
+
+    artist = input("Artist: ")
+    energy = int(input("Energy (0-100): "))
+    duration = int(input("Duration in seconds: "))
+
+    # store each song as dictionary
+    songs.append({
+        "title": title,
+        "artist": artist,
+        "energy": energy,
+        "duration": duration
+    })
+
+
+# choose sorting key
+sort_key = input("Sort by energy or duration: ").lower()
+
+# run merge sort
+sorted_songs = merge_sort(songs, sort_key)
+
+
+# print sorted playlist
+print("\nSorted Playlist:")
+
+for song in sorted_songs:
+    print(song["title"], "-", song["artist"], "-", song[sort_key])
