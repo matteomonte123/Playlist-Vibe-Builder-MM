@@ -91,9 +91,9 @@ What to do in the app:
    - Playlist apears sorted 
 
 
-## Hugging Face Link
-
+## Hugging Face & Github Link
 https://huggingface.co/spaces/mxtteo/Playlist-Vibe-Builder-MM
+https://github.com/matteomonte123/Playlist-Vibe-Builder-MM/tree/main/playlist-vibe-builder
 
 ## File Structure
 Playlist-vibe-builder
